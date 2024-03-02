@@ -14,8 +14,8 @@ namespace Stanford\FBPixel;
 function enqueue_snippet() {
   wp_enqueue_script( 'sufb-pixel', plugins_url( '', __FILE__ ) . '/pixel.js', [], '1.0.1', FALSE );
   $options = get_option( 'sufbp_settings' );
-  wp_localize_script( 'sufb-pixel', 'sufbpOptions', $options ) ;
   if ( isset( $options['sufbp_pixel_id'] ) && !empty( $options['sufbp_pixel_id'] ) ) {
+    wp_localize_script( 'sufb-pixel', 'sufbpOptions', [ $options ] ) ;
   }
 }
 add_action( 'wp_enqueue_scripts', 'Stanford\FBPixel\enqueue_snippet');
